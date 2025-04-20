@@ -3,10 +3,7 @@
 import { useState, useMemo, useCallback } from 'react';
 import { CategoryLegend } from './components/periodic-table/category-legend';
 import { ElementDetails } from './components/periodic-table/element-details';
-import {
-  PeriodicRow,
-  SpecialRow,
-} from './components/periodic-table/periodic-row';
+import { PeriodicRow, SpecialRow } from './components/periodic-table/periodic-row';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { createElementPositionMap } from '@/lib/element-utils';
 import { elements } from '@/statics/periodicTableData';
@@ -15,10 +12,7 @@ import type { Element } from '@/types/element';
 export default function PeriodicTable() {
   const [selectedElement, setSelectedElement] = useState<Element | null>(null);
 
-  const elementsByPosition = useMemo(
-    () => createElementPositionMap(elements),
-    []
-  );
+  const elementsByPosition = useMemo(() => createElementPositionMap(elements), []);
 
   const handleElementClick = (element: Element) => {
     setSelectedElement(element);
@@ -38,7 +32,7 @@ export default function PeriodicTable() {
           onElementClick={handleElementClick}
         />
       )),
-    []
+    [],
   );
 
   return (
@@ -54,17 +48,9 @@ export default function PeriodicTable() {
 
           <div className="spacer"></div>
 
-          <SpecialRow
-            category="lanthanide"
-            elements={elements}
-            onElementClick={handleElementClick}
-          />
+          <SpecialRow category="lanthanide" elements={elements} onElementClick={handleElementClick} />
 
-          <SpecialRow
-            category="actinide"
-            elements={elements}
-            onElementClick={handleElementClick}
-          />
+          <SpecialRow category="actinide" elements={elements} onElementClick={handleElementClick} />
         </div>
       </div>
 
@@ -73,7 +59,7 @@ export default function PeriodicTable() {
       <ElementDetails
         element={selectedElement}
         open={selectedElement !== null}
-        onOpenChange={(open) => !open && closeDialog()}
+        onOpenChange={open => !open && closeDialog()}
       />
     </div>
   );

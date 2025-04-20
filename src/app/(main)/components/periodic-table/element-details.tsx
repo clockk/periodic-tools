@@ -1,9 +1,4 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import type { Element } from '@/types/element';
 
 interface ElementDetailsProps {
@@ -12,11 +7,7 @@ interface ElementDetailsProps {
   onOpenChange: (open: boolean) => void;
 }
 
-export function ElementDetails({
-  element,
-  open,
-  onOpenChange,
-}: ElementDetailsProps) {
+export function ElementDetails({ element, open, onOpenChange }: ElementDetailsProps) {
   if (!element) return null;
 
   return (
@@ -26,9 +17,7 @@ export function ElementDetails({
           <DialogTitle className="flex items-center gap-2">
             <span className="text-2xl font-bold">{element.symbol}</span>
             <span className="text-xl">{element.name}</span>
-            <span className="text-sm text-muted-foreground ml-auto">
-              #{element.atomicNumber}
-            </span>
+            <span className="text-sm text-muted-foreground ml-auto">#{element.atomicNumber}</span>
           </DialogTitle>
         </DialogHeader>
         <div className="grid grid-cols-2 gap-4 py-4">

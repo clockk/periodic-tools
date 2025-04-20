@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@/components/ui/hover-card';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { getCategoryColorClass } from '@/lib/element-utils';
 import type { Element } from '@/types/element';
 
@@ -32,9 +28,7 @@ export function ElementCell({ element, onClick }: ElementCellProps) {
           <div>
             <h3 className="text-lg font-bold flex items-center gap-1">
               {element.symbol}
-              <span className="text-sm font-normal text-muted-foreground">
-                #{element.atomicNumber}
-              </span>
+              <span className="text-sm font-normal text-muted-foreground">#{element.atomicNumber}</span>
             </h3>
             <p className="text-sm">
               {element.name} ({element.englishName})
@@ -42,16 +36,14 @@ export function ElementCell({ element, onClick }: ElementCellProps) {
           </div>
           <div
             className={`w-8 h-8 rounded-full ${getCategoryColorClass(
-              element.category
+              element.category,
             )} flex items-center justify-center`}
           >
             {element.atomicNumber}
           </div>
         </div>
         <div className="mt-2">
-          <p className="text-xs text-muted-foreground">
-            Click for more details
-          </p>
+          <p className="text-xs text-muted-foreground">Click for more details</p>
         </div>
       </HoverCardContent>
     </HoverCard>

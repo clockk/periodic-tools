@@ -8,6 +8,7 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { createElementPositionMap } from '@/lib/element-utils';
 import { elements } from '@/statics/periodicTableData';
 import type { Element } from '@/types/element';
+import { ModeToggle } from '@/components/ui/mode-toggle';
 
 export default function PeriodicTable() {
   const [selectedElement, setSelectedElement] = useState<Element | null>(null);
@@ -39,7 +40,10 @@ export default function PeriodicTable() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Periodic Tools</h1>
-        <ThemeToggle />
+        <div className='flex gap-1'>
+          <ModeToggle />
+          <ThemeToggle />
+        </div>
       </div>
 
       <div className="overflow-x-auto pb-4">

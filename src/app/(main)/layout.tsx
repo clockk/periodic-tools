@@ -1,4 +1,5 @@
 import '@/app/globals.css';
+import { ModeContext } from '@/components/providers/mode-context';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import Head from 'next/head';
 export const metadata = {
@@ -16,9 +17,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        <ModeContext initialMode="TABLE">
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
+        </ModeContext>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@ import '@/app/globals.css';
 import { ModeContext } from '@/components/providers/mode-context';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import Head from 'next/head';
+
 export const metadata = {
   title: 'Periodic Tools',
   description: 'Handle the elements with ease',

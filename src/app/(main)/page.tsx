@@ -36,22 +36,22 @@ export default function PeriodicTable() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
+      <header className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Periodic Tools</h1>
         <div className="flex gap-1">
           <ModeToggle />
           <ThemeToggle />
         </div>
-      </div>
+      </header>
 
-      <div className="overflow-x-auto pb-4">
+      <main className="overflow-x-auto pb-4">
         <div className="periodic-table">
           <Rows />
           <div className="spacer" />
           <SpecialRow category="lanthanide" elements={elements} onElementClick={handleElementClick} />
           <SpecialRow category="actinide" elements={elements} onElementClick={handleElementClick} />
         </div>
-      </div>
+      </main>
 
       <CategoryLegend />
       <ElementDetails

@@ -18,7 +18,7 @@ export function ElementDetails({ element, open, onOpenChange }: ElementDetailsPr
               <DialogTitle className="flex items-center gap-2">
                 <span className="text-2xl font-bold">{element.symbol}</span>
                 <span className="text-xl">{element.name}</span>
-                <span className="text-sm text-muted-foreground ml-auto">#{element.atomicNumber}</span>
+                <span className="text-sm text-muted-foreground">#{element.atomicNumber}</span>
               </DialogTitle>
             </DialogHeader>
             <div className="grid grid-cols-2 gap-4 py-4">

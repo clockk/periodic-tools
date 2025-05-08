@@ -15,15 +15,13 @@ const categories: { label: string; value: Category }[] = [
 
 export function CategoryLegend() {
   return (
-    <div className="mt-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
-      {categories.map((category) => (
+    <section className="mt-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
+      {categories.map(category => (
         <div key={category.value} className="flex items-center">
-          <div
-            className={`w-4 h-4 mr-2 ${getCategoryColorClass(category.value)}`}
-          ></div>
+          <div className={`w-4 h-4 mr-2 ${getCategoryColorClass(category.value)}`}></div>
           <span className="text-sm">{category.label}</span>
         </div>
       ))}
-    </div>
+    </section>
   );
 }

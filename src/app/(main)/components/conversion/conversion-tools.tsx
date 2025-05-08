@@ -124,7 +124,7 @@ export function ConversionTools({
                                 <div className="bg-primary h-2 rounded-full" style={{ width: `${percentage}%` }} />
                               </div>
                             </div>
-                            <span className="w-16 text-right font-medium">{percentage.toFixed(1)}%</span>
+                            <span className="w-16 text-right font-medium">{percentage.toFixed(2)}%</span>
                           </div>
                         ))}
                       </div>
@@ -141,7 +141,7 @@ export function ConversionTools({
                               <div className="flex justify-between items-center">
                                 <span className="font-medium">{element.name}</span>
                                 <span className="text-sm text-muted-foreground">
-                                  {parseFloat(element.atomicWeight).toFixed(2)}
+                                  {parseFloat(element.atomicWeight).toFixed(5)}
                                 </span>
                               </div>
                               <div className="w-full bg-muted rounded-full h-2 mt-1">
@@ -151,7 +151,7 @@ export function ConversionTools({
                                 />
                               </div>
                             </div>
-                            <span className="w-16 text-right font-medium">{weightPercentage.toFixed(1)}%</span>
+                            <span className="w-16 text-right font-medium">{weightPercentage.toFixed(2 )}%</span>
                           </div>
                         ))}
                       </div>
@@ -169,7 +169,7 @@ export function ConversionTools({
                   <div className="p-4 border rounded-lg bg-muted/50">
                     <div className="text-sm text-muted-foreground">총 중량</div>
                     <div className="text-2xl font-bold">
-                      {weightPercentages.reduce((sum, { weight }) => sum + weight, 0).toFixed(3)}
+                      {weightPercentages.reduce((sum, { weight }) => sum + weight, 0).toFixed(5)}
                     </div>
                   </div>
                 </div>

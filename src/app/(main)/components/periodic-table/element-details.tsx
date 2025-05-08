@@ -5,10 +5,9 @@ interface ElementDetailsProps {
   element: Element | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onClose: () => void;
 }
 
-export function ElementDetails({ element, open, onOpenChange, onClose }: ElementDetailsProps) {
+export function ElementDetails({ element, open, onOpenChange }: ElementDetailsProps) {
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>

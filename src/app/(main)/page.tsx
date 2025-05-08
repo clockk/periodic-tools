@@ -29,23 +29,31 @@ export default function PeriodicTable() {
   const elementsByPosition = useMemo(() => createElementPositionMap(elements), []);
   const { mode } = use(ModeContext)!;
 
-  const handleElementClick = (element: Element) => {
-    if (mode === 'TABLE') {
-      setSelectedElement(element);
-    } else {
+  const handleElementClick = useCallback(
+    (element: Element) => {
+      const updateSelectedElements = (updatedElements: SelectedElement[]) => {
+        setSelectedElements(updatedElements);
+        setIsBottomSheetOpen(true);
+      };
+
+      if (mode === 'TABLE') {
+        setSelectedElement(element);
+        return;
+      }
+
       const existingElement = selectedElements.find(item => item.element.atomicNumber === element.atomicNumber);
       if (existingElement) {
-        setSelectedElements(prev =>
-          prev.map(item =>
+        updateSelectedElements(
+          selectedElements.map(item =>
             item.element.atomicNumber === element.atomicNumber ? { ...item, quantity: item.quantity + 1 } : item,
           ),
         );
       } else {
-        setSelectedElements(prev => [...prev, { element, quantity: 1 }]);
+        updateSelectedElements([...selectedElements, { element, quantity: 1 }]);
       }
-      setIsBottomSheetOpen(true);
-    }
-  };
+    },
+    [mode, selectedElements],
+  );
 
   const handleElementRemove = (atomicNumber: number) => {
     setSelectedElements(prev => prev.filter(item => item.element.atomicNumber !== atomicNumber));
@@ -74,10 +82,6 @@ export default function PeriodicTable() {
 
   const handleRemoveCompound = (index: number) => {
     setCompounds(prev => prev.filter((_, i) => i !== index));
-  };
-
-  const closeDialog = () => {
-    setSelectedElement(null);
   };
 
   const Rows = useCallback(
@@ -174,7 +178,6 @@ export default function PeriodicTable() {
           element={selectedElement}
           open={Boolean(selectedElement)}
           onOpenChange={open => setSelectedElement(open ? selectedElement : null)}
-          onClose={closeDialog}
         />
       )}
     </div>

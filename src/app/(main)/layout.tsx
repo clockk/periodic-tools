@@ -29,7 +29,6 @@ export default function RootLayout({children}: LaoutProps) {
             {children}
           </ThemeProvider>
         </ModeContext>
-        {process.env.NODE_ENV}
       </body>
       {isProduction && <GoogleAnalytics gaId="G-8VF3JCEQEC" />}
     </html>

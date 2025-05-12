@@ -2,6 +2,7 @@ import '@/app/globals.css';
 import { ModeContext } from '@/components/providers/mode-context';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import Head from 'next/head';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export const metadata = {
   title: 'Periodic Tools',
@@ -11,7 +12,12 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+type LaoutProps = {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({children}: LaoutProps) {
+  const isProduction = process.env.NODE_ENV === 'production'
   return (
     <html lang="ko" suppressHydrationWarning>
       <Head>
@@ -23,7 +29,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </ThemeProvider>
         </ModeContext>
+        {process.env.NODE_ENV}
       </body>
+      {isProduction && <GoogleAnalytics gaId="G-8VF3JCEQEC" />}
     </html>
   );
 }
